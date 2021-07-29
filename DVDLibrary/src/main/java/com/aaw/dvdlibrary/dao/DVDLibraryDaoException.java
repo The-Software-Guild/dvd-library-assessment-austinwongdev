@@ -11,6 +11,14 @@ package com.aaw.dvdlibrary.dao;
  *
  * @author Austin Wong
  */
-public class DVDLibraryDaoException {
+public class DVDLibraryDaoException extends Exception {
 
+    public DVDLibraryDaoException(String msg){
+        super(msg);
+    }
+    
+    public DVDLibraryDaoException(String msg, Throwable cause){
+        super(msg, cause);
+    }
+    
 }

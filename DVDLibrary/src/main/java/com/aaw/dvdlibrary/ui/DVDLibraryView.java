@@ -14,12 +14,13 @@ package com.aaw.dvdlibrary.ui;
 public class DVDLibraryView {
 
     private UserIO io;
+    private String menuPrompt = "Please select from the above choices.";
     
     public DVDLibraryView(UserIO io){
         this.io = io;
     }
     
-    public int printMenuAndGetSelection(){
+    public int printLibraryMenuAndGetSelection(){
         io.print("=== Library Menu ===");
         io.print("1 - List all DVDs");
         io.print("2 - Search for DVD");
@@ -27,7 +28,26 @@ public class DVDLibraryView {
         io.print("4 - Exit");
         io.print("");
         
-        return io.readInt("Please select from the above choices.", 1, 4);
+        return io.readInt(menuPrompt, 1, 4);
+    }
+    
+    public int printDVDMenuAndGetSelection(){
+        io.print("=== DVD Menu ===");
+        io.print("1 - Edit DVD Info");
+        io.print("2 - Delete DVD");
+        io.print("3 - Return");
+        io.print("");
+        
+        return io.readInt(menuPrompt, 1, 3);
+    }
+    
+    public void displayUnknownCommandMessage(){
+        io.print("Unknown command.");
+    }
+    
+    public void displayErrorMessage(String errorMsg){
+        io.print("=== ERROR ===");
+        io.print(errorMsg);
     }
     
     public void printExitMessage(){
