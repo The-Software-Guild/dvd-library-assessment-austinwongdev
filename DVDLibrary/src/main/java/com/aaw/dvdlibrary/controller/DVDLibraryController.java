@@ -37,7 +37,7 @@ public class DVDLibraryController {
                         listAllDVDs();
                         break;
                     case 2:
-                        searchForDVDs();
+                        searchForDVD();
                         break;
                     case 3:
                         addDVD();
@@ -67,7 +67,14 @@ public class DVDLibraryController {
     private void listAllDVDs(){
     }
     
-    private void searchForDVDs(){
+    private void searchForDVD(){
+        /*
+        Search for DVD
+        
+        if DVD is null, print msg and return to library menu
+        
+        else display DVD info and displayAndGetSelection from DVD menu
+        */
     }
     
     private void addDVD(){
