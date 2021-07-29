@@ -13,4 +13,25 @@ package com.aaw.dvdlibrary.ui;
  */
 public class DVDLibraryView {
 
+    private UserIO io;
+    
+    public DVDLibraryView(UserIO io){
+        this.io = io;
+    }
+    
+    public int printMenuAndGetSelection(){
+        io.print("=== Library Menu ===");
+        io.print("1 - List all DVDs");
+        io.print("2 - Search for DVD");
+        io.print("3 - Add DVD");
+        io.print("4 - Exit");
+        io.print("");
+        
+        return io.readInt("Please select from the above choices.", 1, 4);
+    }
+    
+    public void printExitMessage(){
+        io.print("Closing DVD Library.");
+    }
+    
 }

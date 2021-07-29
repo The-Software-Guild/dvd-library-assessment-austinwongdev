@@ -11,6 +11,6 @@ package com.aaw.dvdlibrary.dao;
  *
  * @author Austin Wong
  */
-public class DVDLibraryDaoFileImpl {
+public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
 
 }
