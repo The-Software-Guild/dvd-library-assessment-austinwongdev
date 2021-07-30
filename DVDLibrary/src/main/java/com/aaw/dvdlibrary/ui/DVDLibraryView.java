@@ -59,6 +59,15 @@ public class DVDLibraryView {
         return io.readInt("Please select which field to edit.", 1, 7);
     }
     
+    public int displayDeleteDVDMenuAndGetSelection(DVD dvdToDelete){
+        io.print("=== Delete DVD ===");
+        io.print("Delete " + dvdToDelete.getTitle() + "?");
+        io.print("1 - Yes");
+        io.print("2 - No");
+        io.print("");
+        return io.readInt(menuPrompt, 1, 2);
+    }
+    
     // Edit DVD Methods
     
     public String promptDVDTitle(){
@@ -99,7 +108,7 @@ public class DVDLibraryView {
         io.print(newDVD.getTitle() + " added.\n");
     }
     
-    public DVD getNewDVDInfo(){      
+    public DVD getNewDVDInfo(){
         DVD newDVD = new DVD(promptDVDTitle());
         newDVD.setReleaseDate(promptReleaseDate());
         newDVD.setMPAARating(promptMPAARating());
@@ -112,12 +121,9 @@ public class DVDLibraryView {
     
     // Delete DVD Methods
     
-    public int displayDeleteDVDMenuAndGetSelection(DVD dvdToDelete){
-        io.print("=== Delete DVD ===");
-        io.print("Delete " + dvdToDelete.getTitle() + "?");
-        io.print("1 - Yes");
-        io.print("2 - No");
-        return io.readInt(menuPrompt, 1, 2);
+    public void displayDeleteDVDSuccessMessage(DVD dvd){
+        io.print(dvd.getTitle() + " deleted.");
+        io.print("");
     }
     
     // List All DVDs Methods
@@ -168,6 +174,7 @@ public class DVDLibraryView {
     public void displayErrorMessage(String errorMsg){
         io.print("=== ERROR ===");
         io.print(errorMsg);
+        io.print("");
     }
     
     public void printExitMessage(){

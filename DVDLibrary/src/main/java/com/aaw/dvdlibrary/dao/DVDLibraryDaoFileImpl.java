@@ -43,4 +43,9 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
         dvdLibrary.put(newTitle, dvd);
         dvdLibrary.remove(oldTitle);
     }
+    
+    @Override
+    public void deleteDVD(DVD dvd){
+        dvdLibrary.remove(dvd.getTitle());
+    }
 }

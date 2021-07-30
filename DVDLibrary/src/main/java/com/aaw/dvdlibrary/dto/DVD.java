@@ -71,6 +71,5 @@ public class DVD {
     public void setUserNote(String userNote){
         this.userNote = userNote;
     }
-    
-    
+
 }

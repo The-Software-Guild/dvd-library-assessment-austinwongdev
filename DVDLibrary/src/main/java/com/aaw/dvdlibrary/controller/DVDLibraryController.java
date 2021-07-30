@@ -93,7 +93,9 @@ public class DVDLibraryController {
                             break;
                             
                         case 2:
-                            // deleteDVD(dvd);
+                            if (deleteDVD(dvd)){
+                                keepGoing = false;
+                            }
                             break;
                             
                         case 3:
@@ -115,7 +117,8 @@ public class DVDLibraryController {
         try{
             do{
                 view.displayDVDInfo(dvd);
-                int editDVDMenuSelection = view.printEditDVDMenuAndGetSelection();
+                int editDVDMenuSelection
+                        = view.printEditDVDMenuAndGetSelection();
                 switch (editDVDMenuSelection){
                     case 1:
                         String oldTitle = dvd.getTitle();
@@ -155,8 +158,21 @@ public class DVDLibraryController {
         }
     }
     
-    private void deleteDVD(DVD dvd){
-        
+    private boolean deleteDVD(DVD dvd){
+        int deleteDVDMenuSelection
+                = view.displayDeleteDVDMenuAndGetSelection(dvd);
+        // ***AAW: Why don't you need try/catch and do/while statements here?
+        switch (deleteDVDMenuSelection){
+            case 1:
+                dao.deleteDVD(dvd);
+                view.displayDeleteDVDSuccessMessage(dvd);
+                return true;
+            case 2:
+                return false;
+            default:
+                displayUnknownCommand();
+        }
+        return false;
     }
     
     private void addDVD(){
