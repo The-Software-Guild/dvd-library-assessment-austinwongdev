@@ -9,7 +9,6 @@ package com.aaw.dvdlibrary.ui;
 
 import com.aaw.dvdlibrary.dto.DVD;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -93,6 +92,22 @@ public class DVDLibraryView {
             io.print(dvd.getTitle());
         }
         io.print("");
+    }
+    
+    public void displaySearchForDVDBanner(){
+        io.print("=== DVD Search ===");
+    }
+    
+    public void displayDVDNotFoundMessage(){
+        io.print("DVD not found.\n");
+    }
+    
+    public void displayDVDInfo(DVD dvd){
+        
+    }
+    
+    public String getDVDTitleChoice(){
+        return io.readString("Please enter the DVD Title");
     }
     
     public void displayUnknownCommandMessage(){

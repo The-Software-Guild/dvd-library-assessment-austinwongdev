@@ -71,13 +71,48 @@ public class DVDLibraryController {
     }
     
     private void searchForDVD(){
-        /*
-        Search for DVD
+        view.displaySearchForDVDBanner();
+        String dvdTitle = view.getDVDTitleChoice();
+        DVD dvd = dao.getDVD(dvdTitle);
+        if (dvd == null){
+            view.displayDVDNotFoundMessage();
+        }
+        else{
+            view.displayDVDInfo(dvd);
+            boolean keepGoing = true;
+            try{
+                do{
+                    int dvdMenuSelection = view.printDVDMenuAndGetSelection();
+                    
+                    switch (dvdMenuSelection){
+                        case 1:
+                            // editDVDInfo(dvd);
+                            break;
+                            
+                        case 2:
+                            // deleteDVD(dvd);
+                            break;
+                            
+                        case 3:
+                            keepGoing = false;
+                            break;
+                            
+                        default:
+                            displayUnknownCommand();
+                    }
+                } while (keepGoing);
+            } catch (Exception ex){ // ***AAW: Change to ClassRosterDaoException
+                view.displayErrorMessage(ex.getMessage());
+            }
+        }
+    }
+    
+    private void editDVDInfo(DVD dvd){
         
-        if DVD is null, print msg and return to library menu
+    }
+    
+    private void deleteDVD(DVD dvd){
         
-        else display DVD info and displayAndGetSelection from DVD menu
-        */
     }
     
     private void addDVD(){

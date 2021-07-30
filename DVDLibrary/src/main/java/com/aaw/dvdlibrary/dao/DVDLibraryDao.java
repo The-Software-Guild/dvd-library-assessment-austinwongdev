@@ -19,4 +19,6 @@ public interface DVDLibraryDao {
     void addDVD(DVD newDVD);
     
     List<DVD> getAllDVDs();
+    
+    DVD getDVD(String dvdTitle);
 }

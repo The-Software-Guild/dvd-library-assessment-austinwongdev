@@ -30,4 +30,9 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     public List<DVD> getAllDVDs(){
         return new ArrayList<DVD>(dvdLibrary.values());
     }
+    
+    @Override
+    public DVD getDVD(String dvdTitle){
+        return dvdLibrary.get(dvdTitle);
+    }
 }
