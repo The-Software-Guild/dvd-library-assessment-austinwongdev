@@ -35,7 +35,9 @@ public class UserIOConsoleImpl implements UserIO {
     @Override
     public String readString(String prompt){
         this.print(prompt);
-        return console.nextLine();
+        String answer = console.nextLine();
+        this.print("");
+        return answer;
     }
     
     /**
@@ -55,7 +57,7 @@ public class UserIOConsoleImpl implements UserIO {
                 break;
             }
             catch (NumberFormatException ex){
-                this.print("Input error. Please try again.");
+                this.print("Input error. Please try again.\n");
             }
         }
         return num;

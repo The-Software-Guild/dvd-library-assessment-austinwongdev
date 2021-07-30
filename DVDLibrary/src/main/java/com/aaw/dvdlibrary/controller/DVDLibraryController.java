@@ -9,6 +9,7 @@ package com.aaw.dvdlibrary.controller;
 
 import com.aaw.dvdlibrary.dao.DVDLibraryDao;
 import com.aaw.dvdlibrary.dao.DVDLibraryDaoException;
+import com.aaw.dvdlibrary.dto.DVD;
 import com.aaw.dvdlibrary.ui.DVDLibraryView;
 
 /**
@@ -65,6 +66,8 @@ public class DVDLibraryController {
     }
     
     private void listAllDVDs(){
+        view.displayAllDVDsBanner();
+        view.displayAllDVDs(dao.getAllDVDs());
     }
     
     private void searchForDVD(){
@@ -78,6 +81,10 @@ public class DVDLibraryController {
     }
     
     private void addDVD(){
+        view.displayAddDVDBanner();
+        DVD newDVD = view.getNewDVDInfo();
+        dao.addDVD(newDVD);
+        view.displayAddDVDSuccessBanner(newDVD);
     }
     
     private void displayUnknownCommand(){
