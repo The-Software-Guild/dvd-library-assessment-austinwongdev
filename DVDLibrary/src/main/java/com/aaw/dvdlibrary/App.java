@@ -2,7 +2,8 @@
  * @author Austin Wong
  * email: austinwongdev@gmail.com
  * date: Jul 29, 2021
- * purpose: 
+ * purpose: To provide a DVD library where users can add, view, edit, 
+ * and delete their DVDs.
  */
 
 package com.aaw.dvdlibrary;

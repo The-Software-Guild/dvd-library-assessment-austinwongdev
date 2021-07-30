@@ -15,7 +15,11 @@ public interface UserIO {
 
     void print(String msg);
     
+    void printWithBanner(String msg);
+    
     String readString(String prompt);
+    
+    String readNonEmptyString(String prompt);
     
     int readInt(String prompt);
     

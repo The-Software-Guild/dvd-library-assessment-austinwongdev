@@ -26,7 +26,7 @@ public class DVDLibraryView {
     // Menu Methods
     
     public int printLibraryMenuAndGetSelection(){
-        io.print("=== Library Menu ===");
+        io.printWithBanner("Library Menu");
         io.print("1 - List all DVDs");
         io.print("2 - Search for DVD");
         io.print("3 - Add DVD");
@@ -37,7 +37,7 @@ public class DVDLibraryView {
     }
     
     public int printDVDMenuAndGetSelection(){
-        io.print("=== DVD Menu ===");
+        io.printWithBanner("DVD Menu");
         io.print("1 - Edit DVD Info");
         io.print("2 - Delete DVD");
         io.print("3 - Return");
@@ -47,7 +47,7 @@ public class DVDLibraryView {
     }
     
     public int printEditDVDMenuAndGetSelection(){
-        io.print("=== Edit DVD Info ===");
+        io.printWithBanner("Edit DVD Info");
         io.print("1 - Title");
         io.print("2 - Release Date");
         io.print("3 - MPAA Rating");
@@ -60,7 +60,7 @@ public class DVDLibraryView {
     }
     
     public int displayDeleteDVDMenuAndGetSelection(DVD dvdToDelete){
-        io.print("=== Delete DVD ===");
+        io.printWithBanner("Delete DVD");
         io.print("Delete " + dvdToDelete.getTitle() + "?");
         io.print("1 - Yes");
         io.print("2 - No");
@@ -71,27 +71,27 @@ public class DVDLibraryView {
     // Edit DVD Methods
     
     public String promptDVDTitle(){
-        return io.readString("Please enter the Title");
+        return io.readNonEmptyString("Please enter the Title");
     }
     
     public String promptReleaseDate(){
-        return io.readString("Please enter the Release Date");
+        return io.readNonEmptyString("Please enter the Release Date");
     }
     
     public String promptMPAARating(){
-        return io.readString("Please enter the MPAA Rating");
+        return io.readNonEmptyString("Please enter the MPAA Rating");
     }
     
     public String promptDirectorName(){
-        return io.readString("Please enter the Director's Name");
+        return io.readNonEmptyString("Please enter the Director's Name");
     }
     
     public String promptStudio(){
-        return io.readString("Please enter the Studio");
+        return io.readNonEmptyString("Please enter the Studio");
     }
     
     public String promptUserNote(){
-        return io.readString("Please enter your Rating/Notes for the DVD");
+        return io.readNonEmptyString("Please enter your Rating/Notes for the DVD");
     }
     
     public void displayEditDVDSuccessMessage(){
@@ -101,7 +101,7 @@ public class DVDLibraryView {
     // Add DVD Methods
     
     public void displayAddDVDBanner(){
-        io.print("=== Add DVD ===");
+        io.printWithBanner("Add DVD");
     }
     
     public void displayAddDVDSuccessMessage(DVD newDVD){
@@ -129,7 +129,7 @@ public class DVDLibraryView {
     // List All DVDs Methods
     
     public void displayAllDVDsBanner(){
-        io.print("=== All DVDs ===");
+        io.printWithBanner("All DVDs");
     }
     
     public void displayAllDVDs(List<DVD> allDVDs){
@@ -142,7 +142,7 @@ public class DVDLibraryView {
     // Search DVD Methods
     
     public void displaySearchForDVDBanner(){
-        io.print("=== DVD Search ===");
+        io.printWithBanner("DVD Search");
     }
     
     public void displayDVDNotFoundMessage(){
@@ -172,8 +172,13 @@ public class DVDLibraryView {
     }
     
     public void displayErrorMessage(String errorMsg){
-        io.print("=== ERROR ===");
+        io.printWithBanner("ERROR");
         io.print(errorMsg);
+        io.print("");
+    }
+    
+    public void displaySaveSuccessMessage(){
+        io.print("DVD Library saved successfully.");
         io.print("");
     }
     

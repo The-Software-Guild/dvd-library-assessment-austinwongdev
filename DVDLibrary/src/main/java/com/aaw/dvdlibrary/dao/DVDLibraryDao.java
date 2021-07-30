@@ -17,12 +17,16 @@ import java.util.List;
 public interface DVDLibraryDao {
 
     void addDVD(DVD newDVD);
-    
-    List<DVD> getAllDVDs();
-    
+
     DVD getDVD(String dvdTitle);
     
     void updateDVDTitleInLibrary(String oldTitle);
     
     void deleteDVD(DVD dvd);
+    
+    List<DVD> getAllDVDs();
+
+    void loadLibrary() throws DVDLibraryDaoException;
+    
+    void writeLibrary() throws DVDLibraryDaoException;
 }

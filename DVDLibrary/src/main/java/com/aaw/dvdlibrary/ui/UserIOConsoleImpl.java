@@ -27,6 +27,16 @@ public class UserIOConsoleImpl implements UserIO {
     }
     
     /**
+     * Takes in a message to display on the console with a small banner on each
+     * side of the message.
+     * @param msg - String of information to display to the user
+     */
+    @Override
+    public void printWithBanner(String msg){
+        System.out.println("=== "  + msg + " ===");
+    }
+    
+    /**
      * Takes in a message to display on the console and then waits for an
      * answer from the user to return.
      * @param prompt - String of information to display to the user
@@ -37,6 +47,22 @@ public class UserIOConsoleImpl implements UserIO {
         this.print(prompt);
         String answer = console.nextLine();
         this.print("");
+        return answer;
+    }
+    
+    
+    /**
+     * Takes in a message to display on the console and then waits for a
+     * non-empty answer from the user to return.
+     * @param prompt - String of information to display to the user
+     * @return - The answer to the message as a String
+     */
+    @Override
+    public String readNonEmptyString(String prompt){
+        String answer;
+        do{
+            answer = this.readString(prompt);
+        } while (answer.isEmpty() || answer.length() == 0);
         return answer;
     }
     
