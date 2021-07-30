@@ -21,4 +21,6 @@ public interface DVDLibraryDao {
     List<DVD> getAllDVDs();
     
     DVD getDVD(String dvdTitle);
+    
+    void updateDVDTitleInLibrary(String oldTitle);
 }

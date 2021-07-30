@@ -35,4 +35,12 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     public DVD getDVD(String dvdTitle){
         return dvdLibrary.get(dvdTitle);
     }
+    
+    @Override
+    public void updateDVDTitleInLibrary(String oldTitle){
+        DVD dvd = getDVD(oldTitle);
+        String newTitle = dvd.getTitle();
+        dvdLibrary.put(newTitle, dvd);
+        dvdLibrary.remove(oldTitle);
+    }
 }

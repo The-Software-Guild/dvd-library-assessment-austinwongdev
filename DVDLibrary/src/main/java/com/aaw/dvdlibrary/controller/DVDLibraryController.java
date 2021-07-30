@@ -68,17 +68,20 @@ public class DVDLibraryController {
     private void listAllDVDs(){
         view.displayAllDVDsBanner();
         view.displayAllDVDs(dao.getAllDVDs());
+        view.pressEnterToContinue();
     }
     
     private void searchForDVD(){
         view.displaySearchForDVDBanner();
-        String dvdTitle = view.getDVDTitleChoice();
+        String dvdTitle = view.promptDVDTitle();
         DVD dvd = dao.getDVD(dvdTitle);
         if (dvd == null){
             view.displayDVDNotFoundMessage();
+            view.pressEnterToContinue();
         }
         else{
             view.displayDVDInfo(dvd);
+            view.pressEnterToContinue();
             boolean keepGoing = true;
             try{
                 do{
@@ -86,7 +89,7 @@ public class DVDLibraryController {
                     
                     switch (dvdMenuSelection){
                         case 1:
-                            // editDVDInfo(dvd);
+                            editDVDInfo(dvd);
                             break;
                             
                         case 2:
@@ -108,7 +111,48 @@ public class DVDLibraryController {
     }
     
     private void editDVDInfo(DVD dvd){
-        
+        boolean keepGoing = true;
+        try{
+            do{
+                view.displayDVDInfo(dvd);
+                int editDVDMenuSelection = view.printEditDVDMenuAndGetSelection();
+                switch (editDVDMenuSelection){
+                    case 1:
+                        String oldTitle = dvd.getTitle();
+                        dvd.setTitle(view.promptDVDTitle());
+                        dao.updateDVDTitleInLibrary(oldTitle);
+                        view.displayEditDVDSuccessMessage();
+                        break;
+                    case 2:
+                        dvd.setReleaseDate(view.promptReleaseDate());
+                        view.displayEditDVDSuccessMessage();
+                        break;
+                    case 3:
+                        dvd.setMPAARating(view.promptMPAARating());
+                        view.displayEditDVDSuccessMessage();
+                        break;
+                    case 4:
+                        dvd.setDirectorName(view.promptDirectorName());
+                        view.displayEditDVDSuccessMessage();
+                        break;
+                    case 5:
+                        dvd.setStudio(view.promptStudio());
+                        view.displayEditDVDSuccessMessage();
+                        break;
+                    case 6:
+                        dvd.setUserNote(view.promptUserNote());
+                        view.displayEditDVDSuccessMessage();
+                        break;
+                    case 7:
+                        keepGoing = false;
+                        break;
+                    default:
+                        displayUnknownCommand();
+                }
+            } while (keepGoing);
+        } catch (Exception ex){ // ***AAW: Change to ClassRosterDaoException
+            view.displayErrorMessage(ex.getMessage());
+        }
     }
     
     private void deleteDVD(DVD dvd){
@@ -119,7 +163,8 @@ public class DVDLibraryController {
         view.displayAddDVDBanner();
         DVD newDVD = view.getNewDVDInfo();
         dao.addDVD(newDVD);
-        view.displayAddDVDSuccessBanner(newDVD);
+        view.displayAddDVDSuccessMessage(newDVD);
+        view.pressEnterToContinue();
     }
     
     private void displayUnknownCommand(){
